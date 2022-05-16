@@ -14,7 +14,8 @@ books.html, book.html -> szablony aplikacji
 
 book.json -> dane(lista książek) zapisane w formacie json
 
-RESTowe API: 
+RESTowe API:
+
 api.py -> importuje metody z modelsapi.py, zwraca dane w formacie json, obsługuje zapytania typu GET, POST, DELETE, PATCH
 
 modelsapi.py -> plik zawierający metody określające sposób obsługi zapytań API: pobranie listy, zapis nowej pozycji, edycja pozycji, wyświetlanie pozycji o danym id, usunięcie pozycji. 
