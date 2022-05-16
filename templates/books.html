@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Domowa Biblioteka></title>
+    <style>
+        table, th, tr, td {border: 0.5px solid black;}
+        th {border: 1px solid black; background-color: rgb(224, 222, 222) ;}
+        h1 {color:black; background-color: rgb(241, 187, 12);}
+        h2 {color: black;}
+    </style>
+</head>
+<h1 >Domowa Blioteka</h1>
+<h2 >Lista książek:</h2>
+
+<table>
+    <thead>
+    <th>Tytuł</th>
+    <th>Autor</th>
+    <th>Rok wydania</th>
+    <th>Wydawnictwo</th>
+    <th>Ilość stron</th>
+    <th>Kategoria</th>
+    <th>Opis</th>
+    <th>Nr id</th>
+
+    </thead>
+{% for book in books %}
+    <tr>
+        <td><a href="/books/{{ loop.index }}">{{ book.book_title }}</a></td>
+        <td>{{ book.book_author }}</td>
+        <td>{{ book.book_year }}</td>
+        <td>{{ book.book_publishing_house }}</td>
+        <td>{{ book.book_number_of_pages}}</td>
+        <td>{{ book.book_category }}</td>
+        <td>{{ book.book_description}}</td>
+        <td>{{ book.book_id }}</td>   
+       
+    </tr>
+{% endfor %}
+</table>
+<div>
+    <h2> Dodaj nową książkę: </h2>
+    <form method="POST" action="/books/">
+        {{ form.hidden_tag() }}
+        <table>
+            {% for field in form if field.widget.input_type != 'hidden' %}
+                <tr>
+                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="Zapisz">
+    </form>
+</div>
+</body>
+</html>
